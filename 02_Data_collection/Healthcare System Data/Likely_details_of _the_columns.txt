@@ -1,4 +1,4 @@
-health_indicators_sdn_with_average_2020_to_2025
+## health_indicators_sdn_with_average_2020_to_2025
 Likely details of abbreviated names: 
 
 "GHO (CODE)": 		Likely represents the Indicator Code.
@@ -8,15 +8,22 @@ Likely details of abbreviated names:
 "DIMENSION (NAME)": 	Represents the Demographic Dimension (like gender or urban/rural).
 "Average": 		Represents the Average Value for the indicator in the specified year and demographic group.
 
-health_facilities_sudan_healthsites
+## health_facilities_sudan_healthsites
 names and purposes for the columns:
+"X, Y": Coordinates (longitude and latitude) indicating the geographic location of the healthcare site.
+"addr_city, addr_street": Address details, likely specifying the city and street where the facility is located.
+"amenity": The type of healthcare facility, such as a hospital or pharmacy.
 
-"name":		 	The name of the health facilities..
-"amenity":	 	The type of health-related service provided (e.g., pharmacy).
-"amenity - original": 	The original classification of the amenity, potentially in Arabic.
-"addr_city": 		The city where the facility is located (currently with missing data).
-"osm_id": 		OpenStreetMap (OSM) unique identifier for the facility.
-"osm_type": 		Type of OSM feature (e.g., nodes).
-"geometry": 		The geographical coordinates (latitude and longitude) of the facility's location.
-"Notes": 		Additional remarks or notes (currently mostly empty).
+changeset_id, changeset_timestamp, changeset_user, changeset_version: Metadata about the changeset in OpenStreetMap (OSM). This includes:
+"changeset_id": A unique identifier for the OSM changeset.
+"changeset_timestamp": The timestamp when the changeset was made.
+"changeset_user": The username of the person who made the changeset.
+"changeset_version": The version number of the changeset.
+
+"completeness": A numeric measure indicating the completeness of the data for a given healthcare facility.
+"dispensing": Specifies whether the facility dispenses medications (likely a "yes" or "no" value).
+"name": The name of the facility (often in Arabic, based on the data).
+"osm_id": The unique identifier for the facility within OpenStreetMap.
+"osm_type": Specifies the type of OSM object (e.g., node or way).
+"uuid": A unique identifier for the record.
 
