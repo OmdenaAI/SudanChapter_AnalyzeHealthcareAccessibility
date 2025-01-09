@@ -6,10 +6,11 @@ Likely details of abbreviated names:
 "YEAR (DISPLAY)": 	Represents the Year.
 "COUNTRY (DISPLAY)": 	Represents the Country Name.
 "DIMENSION (NAME)": 	Represents the Demographic Dimension (like gender or urban/rural).
-"Average": 		Represents the Average Value for the indicator in the specified year and demographic group.
+"VALUE": 		Represents the Value for the indicator in the specified year and demographic group.
 
 ## health_facilities_sudan_healthsites
 names and purposes for the columns:
+"name": The name of the facility.
 "X, Y": Coordinates (longitude and latitude) indicating the geographic location of the healthcare site.
 "addr_city, addr_street": Address details, likely specifying the city and street where the facility is located.
 "amenity": The type of healthcare facility, such as a hospital or pharmacy.
@@ -22,7 +23,6 @@ changeset_id, changeset_timestamp, changeset_user, changeset_version: Metadata a
 
 "completeness": A numeric measure indicating the completeness of the data for a given healthcare facility.
 "dispensing": Specifies whether the facility dispenses medications (likely a "yes" or "no" value).
-"name": The name of the facility (often in Arabic, based on the data).
 "osm_id": The unique identifier for the facility within OpenStreetMap.
 "osm_type": Specifies the type of OSM object (e.g., node or way).
 "uuid": A unique identifier for the record.
