@@ -1,0 +1,22 @@
+health_indicators_sdn_with_average_2020_to_2025
+Likely details of abbreviated names: 
+
+"GHO (CODE)": 		Likely represents the Indicator Code.
+"GHO (DISPLAY)": 	Likely represents the Indicator Name.
+"YEAR (DISPLAY)": 	Represents the Year.
+"COUNTRY (DISPLAY)": 	Represents the Country Name.
+"DIMENSION (NAME)": 	Represents the Demographic Dimension (like gender or urban/rural).
+"Average": 		Represents the Average Value for the indicator in the specified year and demographic group.
+
+health_facilities_sudan_healthsites
+names and purposes for the columns:
+
+"name":		 	The name of the health facilities..
+"amenity":	 	The type of health-related service provided (e.g., pharmacy).
+"amenity - original": 	The original classification of the amenity, potentially in Arabic.
+"addr_city": 		The city where the facility is located (currently with missing data).
+"osm_id": 		OpenStreetMap (OSM) unique identifier for the facility.
+"osm_type": 		Type of OSM feature (e.g., nodes).
+"geometry": 		The geographical coordinates (latitude and longitude) of the facility's location.
+"Notes": 		Additional remarks or notes (currently mostly empty).
+
