@@ -94,4 +94,29 @@ This document provides an overview of the data sources referenced for compiling 
 9. Macrotrends
    - Website: [Sudan Healthcare Spending Trends](https://www.macrotrends.net/global-metrics/countries/SDN/sudan/healthcare-spending)
    - Historical and current healthcare expenditure data.
+  
+## Historical Context Data:
 
+1.) Conflict Information Dataset:
+    - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/conflict_data_sdn.csv](url)
+
+2.) Alternative Conflict Information Dataset:
+    -[https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/gedevents-2025-01-04.csv](url)
+
+3.) Historical Economic Indices in Sudan
+    -[https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/deflators_sdn.csv](url)
+
+4.) Historical Health Indicator in Sudan:
+    -[https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/historical_health_indicators_sdn.csv](url)
+
+5.) Historical Food Security Data:
+    - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/suite-of-food-security-indicators_sdn.csv](url)
+
+6.) Refugee Information:
+    - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/statistic_id1232812_african-countries-hosting-the-most-refugees-2023.xlsx](url)
+
+7.) Life Expectancy at Birth in Sudan 2022:
+    - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/statistic_id971229_life-expectancy-at-birth-in-sudan-2022-by-gender.xlsx](url)
+
+8.) Sudanese Civil War Mortalities:
+    - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/Sudanese_War_Mortalities.xlsx](url)
