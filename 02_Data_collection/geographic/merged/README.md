@@ -12,7 +12,7 @@ This dataset provides comprehensive geometric, satellite, and weather data relat
     * Description: Satellite data on vegetation, water content, and water body changes (NDVI, NDWI indices) for district subdivision level (state >> district >> district subdivision).
     * Source: [Copernicus Sentinel-2 Mission](https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-2)
     * Date Range: July 2015 – January 2025
-    * Granularity: District subdivision level
+    * Granularity: District subdivision level
 3. Weather Data
     * Description: Aggregated weather data by date, including precipitation, humidity, temperature, and other metrics, recorded weekly.
     * Source: [OpenWeatherMap One Call API 3.0 - Daily Aggregation](https://openweathermap.org/api/one-call-3#history_daily_aggregation)
