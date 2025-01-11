@@ -46,29 +46,29 @@ Income levels, education, age distribution, and population density
     Source Link : https://ourworldindata.org/global-education#key-insights  
 
 ## Geographic  
-1. Sudan Health Facilities  
-    data -points: [hotosm_sdn_health_facilities_points_shp.zip](./geographic/hotosm_sdn_health_facilities_points_shp.zip)  
-    data -polygons: [hotosm_sdn_health_facilities_polygons_shp.zip](hotosm_sdn_health_facilities_polygons_shp.zip)   
-    source: [Humanitarian OpenStreetMap Team - open street map - ESRI Shapefile](https://data.humdata.org/dataset/hotosm_sdn_health_facilities)  
+1. Sudan Health Facilities
+    * data -points: [hotosm_sdn_health_facilities_points_shp.zip](./geographic/hotosm_sdn_health_facilities_points_shp.zip)  
+    * data -polygons: [hotosm_sdn_health_facilities_polygons_shp.zip](hotosm_sdn_health_facilities_polygons_shp.zip)   
+    * source: [Humanitarian OpenStreetMap Team - open street map - ESRI Shapefile](https://data.humdata.org/dataset/hotosm_sdn_health_facilities)  
     ![quick chart](./geographic/screenshot/Screenshot%202025-01-03%20at%2017-36-44%20Sudan%20Health%20Facilities%20(OpenStreetMap%20Export)%20-%20Humanitarian%20Data%20Exchange.png) _(excluded from merging due to overlap with data collected for other segments)_
 2. Sudan administrative areas on 3 levels (states, districts, district subdivisions)
     data : [GADM Spatial Database by Country](https://gadm.org/download_country.html)
 3. Satellite data on vegetation, water content and water body changes (NDVI, NDWI) on district subdivision level (state >> district >> district subdivision)
-    data : [Copernicus Sentinel-2 Mission](https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-2)
-    date range : 07/2015 - 01/2025
-    granularity : district subdivison level
+    * data : [Copernicus Sentinel-2 Mission](https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-2)
+    * date range : 07/2015 - 01/2025
+    * granularity : district subdivison level
 4. Aggregated weather data by date from OpenWeatherMap (precipitation, humidity, temperature, etc.)
-    data : [OpenWeatherMap One Call API 3.0 - Daily Aggregation](https://openweathermap.org/api/one-call-3#history_daily_aggregation)
-    date range : 01/2022 - 12/2024
-    granularity : state level, for one day per week
-6. Infrastructure data from OpenStreetMap (highways, railways, waterways)
-    data : [OpenStreetMap API](https://wiki.openstreetmap.org/wiki/API_v0.6)
-    date range : -
-    granularity : district level
-8. Sudan's major cities' location from Simplemaps by state
-    data : [Simplemaps database](https://simplemaps.com/data/world-cities)
-    date range : -
-    granularity : state level
+    * data : [OpenWeatherMap One Call API 3.0 - Daily Aggregation](https://openweathermap.org/api/one-call-3#history_daily_aggregation)
+    * date range : 01/2022 - 12/2024
+    * granularity : state level, for one day per week
+5. Infrastructure data from OpenStreetMap (highways, railways, waterways)
+    * data : [OpenStreetMap API](https://wiki.openstreetmap.org/wiki/API_v0.6)
+    * date range : -
+    * granularity : district level
+6. Sudan's major cities' location from Simplemaps by state
+    * data : [Simplemaps database](https://simplemaps.com/data/world-cities)
+    * date range : -
+    * granularity : state level
    
 ## Healthcare
 ## Sources for Healthcare Data in Sudan
