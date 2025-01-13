@@ -6,4 +6,4 @@ The merged dataset for this segment includes the following information:
 
 3.) Number of Fatalities (conflict_data_sdn.csv, gedevents-2025-01-04.csv)
 
-4.) GDP Inflator Value at the Time of Incident (deflators_sdn.csv)
+4.) GDP Deflator Value at the Time of Incident (deflators_sdn.csv)
