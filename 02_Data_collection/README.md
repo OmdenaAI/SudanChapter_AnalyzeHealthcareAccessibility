@@ -140,3 +140,63 @@ This document provides an overview of the data sources referenced for compiling 
 
 8.) Sudanese Civil War Mortalities:
     - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/Sudanese_War_Mortalities.xlsx](url)
+
+## Disease Surveillance Data:
+#### Overview: 
+Data collected for disease surveillance was partitioned into two separate CSV files based on the data they represented. Data representing the count of individual cases and deaths for each disease condition were collected in the combined_2018_2019_2024. The data on the disease indicators of the various disease conditions were collected into the disease_indicators CSV file. 
+### 1.	Sudan disease counts dataset (combined_2018_2019_2024.csv)
+
+#### Description:
+The Sudan Disease Counts dataset provides vital data for understanding the epidemiology of various disease conditions nationwide. It includes information on the total number of reported cases and deaths for each disease, organized by state and year. 
+
+#### Note:
+The 2018 dataset did not have reports on “deaths”; therefore, we provided death cases for the 2019 and 2024 datasets. The Heart_Storkes_Cummulative data reported in 2024 only recorded values for the Northern and Red Sea states, delineating other rows of zero values, and were consequently removed. The two observations for the Heart_Storkes_Cummulative condition were labeled as “other” in the 2024 dataset. Also, the disease cases reported for Cholera may not be accurate since cholera-prone states such as Kassala, Northern, and Red Sea recorded zero cholera cases.
+
+#### Key Features:
+States: Represents the geographic regions within Sudan where the data was collected.
+Year: Covers 2018, 2019, and 2024, providing a multi-year perspective on disease trends.
+Disease: Details specific diseases tracked during the surveillance period.
+Cases: Indicates the number of confirmed cases for each disease condition.
+Deaths: Records the corresponding fatalities attributed to each disease.
+File name: combined_2018_2019_2024.csv
+
+#### Sources: 
+2018_prevalence_of_diseases_outpatient_clinics_per_state: https://data.humdata.org/dataset/300f9677-da29-4698-bb3c-bc3331b254d1/resource/6c1fff73-a418-4f2c-                                                                 86ca-748019180501/download/2018_prevalence_of_diseases_outpatient_clinics_per_state.xlsx
+Sudan-disease-outbreaks-2019: https://data.humdata.org/dataset/33ea8b09-7501-46d2-89b1-8376a1d8834f/resource/b9465fc1-15d4-462e-91df-        
+                              2f2c39ee5cc3/download/sudan-disease-outbreaks-2019.xlsx
+Sudan_disease_2024:             
+    https://app.powerbi.com/viewr=eyJrIjoiZDdhYjczYmItMmU1My00OGRiLWIxMTUtM2VjZjg4YjE5ZmNlIiwidCI6ImIzZTVkYjVlLTI5NDQtNDgzNy05OWY1LTc0ODhhY2U1NDMxOSIsImMiOjh9
+
+### 2.	Disease indicator dataset (disease_indicators.csv)
+
+#### Description: 
+The Disease Indicator Dataset provides essential health metrics for monitoring and evaluating the prevalence and impact of several diseases in Sudan. The dataset combines confirmed case counts and estimated mortality rates, providing a comprehensive overview of disease trends and their variability across different years. It includes metadata for contextual information such as the region, country, and dimensions of interest, making it valuable for surveillance and public health planning.
+
+#### Note:
+Two observations (rows 486 and 489) showed similar values of 7 years difference for the period of data collection (YEAR (DISPLAY), STARTYEAR, ENDYEAR) compared to the remaining data set. 
+
+#### Key Features:
+Indicators Include metrics such as:
+GHO (CODE) and GHO (DISPLAY) columns in the dataset reference specific health indicators tracked within the GHO, such as the number of confirmed malaria cases or the estimated malaria mortality rate. The GHO (URL) column provides a direct link to the official WHO page with more details about each indicator
+Year: This feature captures data for specific years (e.g., 2014, 2020, and 2021), enabling trend analysis.
+Region and Country: Identifies Sudan within the Eastern Mediterranean Region (EMR).
+Uncertainty Range: The dataset provides a confidence interval for mortality rates, indicating the range of possible values (low to high).
+Numeric and Display Values: Includes raw numeric values alongside formatted values for straightforward interpretation.
+File name: disease_indicators.csv
+
+#### Sources:
+Malaria Indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/c2e96c5d-2ce5-44d7-a91b-a8728ffd05c4/download/malaria_indicators_sdn.csv
+
+Tuberculosis Indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/2963cf5b-fbbc-41be-bbe3-407777a13dd4/download/tuberculosis_indicators_sdn.csv
+
+Neglected tropical diseases indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/f2a8fb09-58e1-4298-9343-ace48ee91628/download/neglected_tropical_diseases_indicators_sdn.csv
+
+Noncommunicable diseases indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/5462eebd-91f3-43fd-9836-4b76641832bf/download/noncommunicable_diseases_indicators_sdn.csv
+
+HIV Indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/87772772-883b-4f12-ba82-d01165a3e503/download/hiv_indicators_sdn.csv
+
+Hepatitis Indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/410a6688-ce62-462a-8432-d8a39ff9cae2/download/hepatitis_indicators_sdn.csv
+
+Sexually Transmitted Infections Indicators for Sudan: https://data.humdata.org/dataset/2e8b6442-56ef-4bff-98eb-dfbfc62f28ed/resource/500dae5a-36ef-4816-8355-082342153b13/download/sexually_transmitted_infections_indicators_sdn.csv
+
+
