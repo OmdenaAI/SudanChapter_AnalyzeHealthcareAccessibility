@@ -142,12 +142,15 @@ This document provides an overview of the data sources referenced for compiling 
     - [https://github.com/OmdenaAI/SudanChapter_AnalyzeHealthcareAccessibility/blob/main/02_Data_collection/historical_context/Sudanese_War_Mortalities.xlsx](url)
 
 ## Disease Surveillance Data:
-Overview: Data collected for disease surveillance was partitioned into two separate CSV files based on the data they represented. Data representing the count of individual cases and deaths for each disease condition were collected in the combined_2018_2019_2024. The data on the disease indicators of the various disease conditions were collected into the disease_indicators CSV file. 
+### Overview: 
+Data collected for disease surveillance was partitioned into two separate CSV files based on the data they represented. Data representing the count of individual cases and deaths for each disease condition were collected in the combined_2018_2019_2024. The data on the disease indicators of the various disease conditions were collected into the disease_indicators CSV file. 
 ## 1.	Sudan disease counts dataset (combined_2018_2019_2024.csv)
 
 ### Description:
 The Sudan Disease Counts dataset provides vital data for understanding the epidemiology of various disease conditions nationwide. It includes information on the total number of reported cases and deaths for each disease, organized by state and year. 
-Note:	The 2018 dataset did not have reports on “deaths”; therefore, we provided death cases for the 2019 and 2024 datasets. The Heart_Storkes_Cummulative data reported in 2024 only recorded values for the Northern and Red Sea states, delineating other rows of zero values, and were consequently removed. The two observations for the Heart_Storkes_Cummulative condition were labeled as “other” in the 2024 dataset. Also, the disease cases reported for Cholera may not be accurate since cholera-prone states such as Kassala, Northern, and Red Sea recorded zero cholera cases.
+
+### Note:
+The 2018 dataset did not have reports on “deaths”; therefore, we provided death cases for the 2019 and 2024 datasets. The Heart_Storkes_Cummulative data reported in 2024 only recorded values for the Northern and Red Sea states, delineating other rows of zero values, and were consequently removed. The two observations for the Heart_Storkes_Cummulative condition were labeled as “other” in the 2024 dataset. Also, the disease cases reported for Cholera may not be accurate since cholera-prone states such as Kassala, Northern, and Red Sea recorded zero cholera cases.
 
 ### Key Features:
 States: Represents the geographic regions within Sudan where the data was collected.
@@ -168,7 +171,9 @@ Sudan_disease_2024:
 
 ### Description: 
 The Disease Indicator Dataset provides essential health metrics for monitoring and evaluating the prevalence and impact of several diseases in Sudan. The dataset combines confirmed case counts and estimated mortality rates, providing a comprehensive overview of disease trends and their variability across different years. It includes metadata for contextual information such as the region, country, and dimensions of interest, making it valuable for surveillance and public health planning.
-Note:	Two observations (rows 486 and 489) showed similar values of 7 years difference for the period of data collection (YEAR (DISPLAY), STARTYEAR, ENDYEAR) compared to the remaining data set. 
+
+### Note:
+Two observations (rows 486 and 489) showed similar values of 7 years difference for the period of data collection (YEAR (DISPLAY), STARTYEAR, ENDYEAR) compared to the remaining data set. 
 
 ### Key Features:
 Indicators Include metrics such as:
