@@ -177,7 +177,7 @@ Two observations (rows 486 and 489) showed similar values of 7 years difference 
 
 #### Key Features:
 Indicators Include metrics such as:
-The GHO (CODE) column reference specific health indicators tracked for each disease case, such as the MALARIA_CONF_CASES (number of confirmed malaria cases) or the estimated malaria mortality rate.
+The GHO (CODE) column reference specific health indicators tracked for each disease case, such as the MALARIA_CONF_CASES or MALARIA_EST_MORTALITY.
 Year: This feature captures data for specific years (e.g., 2014, 2020, and 2021), enabling trend analysis.
 Region and Country: Identifies Sudan within the Eastern Mediterranean Region (EMR).
 Uncertainty Range: The dataset provides a confidence interval for mortality rates, indicating the range of possible values (low to high).
