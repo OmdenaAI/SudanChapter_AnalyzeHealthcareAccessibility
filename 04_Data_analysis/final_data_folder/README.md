@@ -8,3 +8,5 @@ The data contains around 40 variables across time, meant to be used in time seri
 3.) final_ndwi_geographical.csv -- this file contains Sudan's water content information from the approximate last decade (came from Geographical group)
 
 3.) final_healthcare_facility_dataset.csv -- this file contains information on healthcare facilities within Sudan and their locations (came from Demographics group)
+
+4.) Population_by_cities_data.csv -- this file contains information on the differing population scattered throughout Sudan
