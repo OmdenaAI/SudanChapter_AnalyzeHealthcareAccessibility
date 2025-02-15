@@ -5,6 +5,7 @@ import pandas as pd
 from geopy.distance import geodesic
 import pandas as pd
 import plotly.express as px
+
 import os
 
 print("Current Working Directory:", os.getcwd())
@@ -22,6 +23,7 @@ data_path = os.path.join(current_dir, "hospital_data.csv")
 hospital_data = pd.read_csv(data_path)
 
 # function for searching the nearest healthcare facility
+
 def find_nearest_hospital(user_lat, user_lon, hospital_data):
 
     # check if the data is empty
@@ -45,6 +47,7 @@ def find_nearest_hospital(user_lat, user_lon, hospital_data):
         print(f"An error occurred: {e}")
         return None
 
+
 # Streamlit UI
 st.title("HealthCare Accessibility Determination System")
 st.write("By input your location, determine the possible accessibility to the nearest healthcare facility")
@@ -56,6 +59,7 @@ pop2024 = st.number_input("Input the population of your nearest city", value=100
 
 if st.button("Determine"):
     # search the nearest hospitals
+
     nearest_hospital = find_nearest_hospital(user_lat, user_lon, hospital_data)
 
     # create the data for model input
