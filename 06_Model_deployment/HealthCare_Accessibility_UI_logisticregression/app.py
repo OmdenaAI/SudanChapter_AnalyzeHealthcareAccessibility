@@ -7,6 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 import os
+
 print("Current Working Directory:", os.getcwd())
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -22,12 +23,30 @@ data_path = os.path.join(current_dir, "hospital_data.csv")
 hospital_data = pd.read_csv(data_path)
 
 # function for searching the nearest healthcare facility
-def find_nearest_hospital(user_lat, user_lon):
-    hospital_data["distance_km"] = hospital_data.apply(
-        lambda row: geodesic((user_lat, user_lon), (row["Latitude_h"], row["Longitude_h"])).km, axis=1
-    )
-    nearest_hospital = hospital_data.loc[hospital_data["distance_km"].idxmin()]
-    return nearest_hospital
+
+def find_nearest_hospital(user_lat, user_lon, hospital_data):
+
+    # check if the data is empty
+    if hospital_data.empty:
+        raise ValueError("Error: Hospital data is empty.")
+    
+    try:
+        # copy the hospital_data
+        hospital_data_copy = hospital_data.copy()
+
+        # calculate the distance
+        hospital_data_copy["distance_km"] = hospital_data_copy.apply(
+            lambda row: geodesic((user_lat, user_lon), (row["Latitude_h"], row["Longitude_h"])).km, axis=1
+        )
+
+        # get the nearest hospital
+        nearest_hospital = hospital_data_copy.loc[hospital_data_copy["distance_km"].idxmin()]
+        return nearest_hospital
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
 
 # Streamlit UI
 st.title("HealthCare Accessibility Determination System")
@@ -40,7 +59,8 @@ pop2024 = st.number_input("Input the population of your nearest city", value=100
 
 if st.button("Determine"):
     # search the nearest hospitals
-    nearest_hospital = find_nearest_hospital(user_lat, user_lon)
+
+    nearest_hospital = find_nearest_hospital(user_lat, user_lon, hospital_data)
 
     # create the data for model input
     input_data = np.array([
