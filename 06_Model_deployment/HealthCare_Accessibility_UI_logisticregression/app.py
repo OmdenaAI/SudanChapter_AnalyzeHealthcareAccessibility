@@ -26,7 +26,7 @@ def get_data():
     """
 
     # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = os.path.join(current_dir, 'ndvi_ndwi_values_2000_2023_gen.csv')
+    DATA_FILENAME = os.path.join(current_dir, 'ndvi_ndwi_values_2000_2023.csv')
     df = pd.read_csv(DATA_FILENAME)
 
 
@@ -57,11 +57,14 @@ model = model(df)
 
 
 
-model_path = os.path.join(current_dir, "model.pkl")
+
+###Health care
+
+model_path = os.path.join(current_dir, "model.pkl") 
 
 # Logistic Regression model load
 with open(model_path, "rb") as f:
-    model = pickle.load(f)
+    model2 = pickle.load(f)
 
 # hospital data load
 data_path = os.path.join(current_dir, "hospital_data.csv")
@@ -132,124 +135,120 @@ def forecaster(month, year, df):
 
 
 # Streamlit UI
-st.title("HealthCare Accessibility Determination System")
-st.write("By input your location and the time of year, determine the probability of a malaria outbreak and possible accessibility to the nearest healthcare facility")
+st.title("Desease Prediction and HealthCare Accessibility Determination System")
 
-
-
-# user input
-#month and year for malaria probability
-
-month = st.number_input('please provide the month of the year you are looking for (1-12)')
-year = st.number_input('please provide the year you are looking for')
-
-#lat, long, and pop for healthcare accesibility model
-
-user_lat = st.number_input("Input your latitude", value=15.45, format="%.6f")
-user_lon = st.number_input("Input your longitude", value=32.49, format="%.6f")
-pop2024 = st.number_input("Input the population of your nearest city", value=1000000)
-
-
-
+###1page
 ###malaria outbreak probability
-inputs = None
-
-if month and year:
-    #generate ndvi and ndwi values based on time of year
-    forecast = forecaster(month, year, df)
-    #prepare the inputs for the model
-    inputs = np.array([forecast[0], forecast[1], int(month), 0 ,0 ,0 ,1])
+def malaria_page():
+    st.title("Malaria Prediction")
+    st.write("By input the month and the time of year, determine the probability of a malaria outbreak")
     
-    inputs = inputs.reshape(1,-1)
-    #predicte the probability of malaria outbreak
-    pred = model.predict(inputs)
-    pred_proba = model.predict_proba(inputs)
+    # User input
+    month = st.number_input("please provide the month of the year you are looking for (1-12)", min_value=1, max_value=12, step=1)
+    year = st.number_input("please provide the year you are looking for", min_value=2000, max_value=2023, step=1)
 
-    #verbally declare the prediction value's interpretation
-    #verbally declare the probablity of the prediction
-    
-    if pred == 0:
+    inputs = None
+    if month and year:
+        # preparation for prediction of malaria
+        forecast = forecaster(month, year, df)  # forcast
+        inputs = np.array([forecast[0], forecast[1], int(month), 0 ,0 ,0 ,1])
+        inputs = inputs.reshape(1, -1)
         
-        st.write('the prediction is that there will not be a malaria outbreak')
+        # result
+        pred = model.predict(inputs)
+        pred_proba = model.predict_proba(inputs)
 
-    elif pred == 1:
-        
-        st.write('the prediction is that there will be a malaria outbreak')
+        # message
+        if pred == 0:
+            st.write('The prediction is that there will not be a malaria outbreak')
+        elif pred == 1:
+            st.write('The prediction is that there will be a malaria outbreak')
+
+        if pred_proba is not None:
+            st.write(f'The probability of a malaria outbreak occurring is {pred_proba[0, 1]}')
+
+    if st.button('Next Page: Healthcare Accessibility'):
+        st.session_state.page = 'healthcare'
 
 
-    if pred_proba is not None:
-
-        st.write(f'the probability of a malaria outbreak occuring is {pred_proba[0,1]}')
-
-
-
+###2page
 ###healthcare accesibility 
-if st.button("Determine"):
-    # search the nearest hospitals
+def healthcare_page():
+    st.title("Healthcare Accessibility")
+    st.write("By input your location and the population of your nearest city, determine possible accessibility to the nearest healthcare facility")
 
-    nearest_hospital = find_nearest_hospital(user_lat, user_lon, hospital_data)
+    #lat, long, and pop for healthcare accesibility model
 
-    # create the data for model input
-    input_data = np.array([
-        user_lat,
-        user_lon,
-        pop2024,
-        nearest_hospital["Latitude_h"],
-        nearest_hospital["Longitude_h"],
-        nearest_hospital["distance_km"],
-        *nearest_hospital[["amenity_Referral Hospital", "amenity_Teaching Hospital",
+    user_lat = st.number_input("Input your latitude", value=15.45, format="%.6f")
+    user_lon = st.number_input("Input your longitude", value=32.49, format="%.6f")
+    pop2024 = st.number_input("Input the population of your nearest city", value=1000000)
+        
+    # search the nearest healthcare facilities 
+    if st.button("Determine"):
+        # the nearest healthcare facilities 
+        nearest_hospital = find_nearest_hospital(user_lat, user_lon, hospital_data)
+        
+        # preparing the data for model
+        input_data = np.array([
+            user_lat,
+            user_lon,
+            pop2024,
+            nearest_hospital["Latitude_h"],
+            nearest_hospital["Longitude_h"],
+            nearest_hospital["distance_km"],
+            *nearest_hospital[["amenity_Referral Hospital", "amenity_Teaching Hospital",
+                               "amenity_Type A Hospital", "amenity_Type B Hospital",
+                               "amenity_Type C Hospital", "amenity_Type D Hospital",
+                               "amenity_clinic", "amenity_dentist", "amenity_doctors",
+                               "amenity_hospital", "amenity_pharmacy"]].values
+        ]).reshape(1, -1)
+        
+        # prediction
+        prob = model2.predict_proba(input_data)[:, 1]  # prob
+        threshold = 0.71  # threshold for logistic regression
+        
+        # if it is accessible with 5km and the threshold
+        accessible = (nearest_hospital["distance_km"] <= 5) and (prob[0] > threshold)
+        
+        # result
+        amenity_columns = ["amenity_Referral Hospital", "amenity_Teaching Hospital",
                            "amenity_Type A Hospital", "amenity_Type B Hospital",
                            "amenity_Type C Hospital", "amenity_Type D Hospital",
                            "amenity_clinic", "amenity_dentist", "amenity_doctors",
-                           "amenity_hospital", "amenity_pharmacy"]].values
-    ]).reshape(1, -1)
+                           "amenity_hospital", "amenity_pharmacy"]
+        
+        # extract the nearest amenity
+        nearest_amenities = [col.replace("amenity_", "").replace("_", " ") for col in amenity_columns if nearest_hospital[col]]
+        
+        if nearest_amenities:
+            st.write(f"**The nearest healthcare facility:** {', '.join(nearest_amenities)}")
+        else:
+            st.write("No healthcare facility found nearby.")
+        
+        st.write(f"**Distance:** {nearest_hospital['distance_km']:.2f} km")
+        st.write(f"**Accessibility:** {'✅ YES' if accessible else '❌ NO'} (Possibility: {prob[0]:.2f})")
+        
+        # plot the map
+        df = pd.DataFrame({
+            "latitude": [user_lat, nearest_hospital["Latitude_h"]],
+            "longitude": [user_lon, nearest_hospital["Longitude_h"]],
+            "type": ["Your Location", "Healthcare Facility"]
+        })
 
-    # prediction
-    prob = model.predict_proba(input_data)[:, 1]  # get the probability for prediction
-    threshold = 0.71  # Logistic Regression threshold
-
-    # Accessibility within 5km is accessible
-    accessible = (nearest_hospital["distance_km"] <= 5) and (prob[0] > threshold)
-
-    # result
-    amenity_columns = ["amenity_Referral Hospital", "amenity_Teaching Hospital",
-                   "amenity_Type A Hospital", "amenity_Type B Hospital",
-                   "amenity_Type C Hospital", "amenity_Type D Hospital",
-                   "amenity_clinic", "amenity_dentist", "amenity_doctors",
-                   "amenity_hospital", "amenity_pharmacy"]
-
-    # Extract only the variable with `True` 
-    nearest_amenities = [col.replace("amenity_", "").replace("_", " ") for col in amenity_columns if nearest_hospital[col]]
-
-    # Streamlit
-    if nearest_amenities:
-        st.write(f"**The nearest healthcare facility:** {', '.join(nearest_amenities)}")
-    else:
-        st.write("No healthcare facility found nearby.")
-
-    st.write(f"**Distance:** {nearest_hospital['distance_km']:.2f} km")
-    st.write(f"**Accessbility:** {'✅ YES' if accessible else '❌ NO'}(Possibility: {prob[0]:.2f})")
-
-
-
-
-    df = pd.DataFrame({
-    "latitude": [user_lat, nearest_hospital["Latitude_h"]],
-    "longitude": [user_lon, nearest_hospital["Longitude_h"]],
-    "type": ["Your Location", "Healthcare Facility"]
-    })
-
-    fig = px.scatter_mapbox(df, lat="latitude", lon="longitude", 
-                            color="type", zoom=10, mapbox_style="open-street-map",
-                            color_discrete_map={"Your Location": "red", "Healthcare Facility": "blue"})
+        fig = px.scatter_mapbox(df, lat="latitude", lon="longitude", 
+                                color="type", zoom=10, mapbox_style="open-street-map",
+                                color_discrete_map={"Your Location": "red", "Healthcare Facility": "blue"})
+        st.plotly_chart(fig)
     
-    # fig.update_layout(
-    # mapbox=dict(
-    #     center=go.layout.mapbox.Center(lat=user_lat, lon=user_lon),
-    #     zoom=10
-    # )
-    # )
+    if st.button('Previous Page: Malaria Prediction'):
+        st.session_state.page = 'malaria'
 
+# manage the page
+if 'page' not in st.session_state:
+    st.session_state.page = 'malaria'  # the page first come
 
-
-    st.plotly_chart(fig)
+# the current page
+if st.session_state.page == 'malaria':
+    malaria_page()
+elif st.session_state.page == 'healthcare':
+    healthcare_page()
