@@ -17,6 +17,9 @@ print("Current Working Directory:", os.getcwd())
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
+
+
+#malaria
 #load the ndwi and ndvi data from the folder
 def get_data():
     """ Get the NDVI AND NDWI VALUE INFORMATION AND INPUT IT INTO THE MODEL
@@ -59,7 +62,6 @@ model = model(df)
 
 
 ###Health care
-
 model_path = os.path.join(current_dir, "model.pkl") 
 
 # Logistic Regression model load
@@ -71,7 +73,6 @@ data_path = os.path.join(current_dir, "hospital_data.csv")
 hospital_data = pd.read_csv(data_path)
 
 # function for searching the nearest healthcare facility
-
 def find_nearest_hospital(user_lat, user_lon, hospital_data):
 
     # check if the data is empty
@@ -95,8 +96,10 @@ def find_nearest_hospital(user_lat, user_lon, hospital_data):
         print(f"An error occurred: {e}")
         return None
 
-#function for determining the ndvi and ndwi values based on a forecaster function
 
+
+#malaria
+#function for determining the ndvi and ndwi values based on a forecaster function
 def forecaster(month, year, df):
 
     date = f'{int(year)}-{int(month)}-15'
@@ -135,7 +138,9 @@ def forecaster(month, year, df):
 
 
 # Streamlit UI
-st.title("Desease Prediction and HealthCare Accessibility Determination System")
+st.title("Sudan Disease Prediction and HealthCare Accessibility Determination System")
+
+# page = st.sidebar.radio("Select the page", ["malaria", "healthcare"])
 
 ###1page
 ###malaria outbreak probability
