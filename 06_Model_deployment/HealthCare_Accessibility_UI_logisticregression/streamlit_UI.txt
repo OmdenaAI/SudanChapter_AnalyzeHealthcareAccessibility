@@ -1,1 +1,1 @@
-https://sudanhealthcare-logisticregression.streamlit.app/
+https://sudan-disease-prediction-healthcare-accessibility.streamlit.app/
