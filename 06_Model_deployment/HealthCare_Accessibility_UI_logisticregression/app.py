@@ -12,6 +12,11 @@ from sklearn.linear_model import LogisticRegression
 
 import os
 
+
+print("Current Working Directory:", os.getcwd())
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
 #load the ndwi and ndvi data from the folder
 def get_data():
     """ Get the NDVI AND NDWI VALUE INFORMATION AND INPUT IT INTO THE MODEL
@@ -21,7 +26,7 @@ def get_data():
     """
 
     # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = Path(__file__).parent/'ndvi_ndwi_values_2000_2023_gen.csv'
+    DATA_FILENAME = os.path.join(current_dir, 'ndvi_ndwi_values_2000_2023_gen.csv')
     df = pd.read_csv(DATA_FILENAME)
 
 
@@ -52,9 +57,6 @@ model = model(df)
 
 
 
-print("Current Working Directory:", os.getcwd())
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(current_dir, "model.pkl")
 
 # Logistic Regression model load
@@ -62,7 +64,6 @@ with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 # hospital data load
-current_dir = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(current_dir, "hospital_data.csv")
 hospital_data = pd.read_csv(data_path)
 
