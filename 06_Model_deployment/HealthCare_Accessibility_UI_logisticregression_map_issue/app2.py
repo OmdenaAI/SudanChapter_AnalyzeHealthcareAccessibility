@@ -125,11 +125,11 @@ pop2024 = population
 st.write(f"Population: {population}")
 
 
-# セッション状態の初期化
+# Initialize the status of session
 if "map_data" not in st.session_state:
-    st.session_state.map_data = None  # 地図の初期値
+    st.session_state.map_data = None  # Initialize the status
 if "determined" not in st.session_state:
-    st.session_state.determined = False  # 初期化   
+    st.session_state.determined = False  # Initialize
 
 
 if st.button("Determine"):
@@ -192,7 +192,7 @@ if st.button("Determine"):
 
 
     # make a Folium map. the setting location is the user's location
-    # 地図データがすでにある場合はそれを利用
+    # if the map is existing, then use it
     if st.session_state.map_data is None:
         m = folium.Map(location=[user_lat, user_lon], zoom_start=10)
         folium.Marker([user_lat, user_lon], popup="Khartoum").add_to(m)
@@ -212,12 +212,12 @@ if st.button("Determine"):
             icon=folium.Icon(color="blue")
         ).add_to(m)
 
-        # Streamlitに地図を表示
-        st.session_state.map_data = m  # 地図のデータを保存
-    # map_display = st_folium(m, width=700, height=500)  # 地図を表示
+        # Show map on Streamlit
+        st.session_state.map_data = m  # save the map data
+    # map_display = st_folium(m, width=700, height=500)  # show the map
     # if st.session_state.determined:
     #     st.write("Results are displayed here!")
 
-    # セッションに保存された地図を表示
+    # show the map that was saved in the session
     if st.session_state.determined and st.session_state.map_data:
         st_folium(st.session_state.map_data, width=700, height=500)
