@@ -16,7 +16,7 @@ The goal is to create a robust and scalable solution for predicting disease outb
 1. **Data Collection & Preprocessing**: Gathering historical and geospatial data while ensuring data quality.  
 2. **Exploratory Data Analysis (EDA)**: Identifying patterns, trends, and high-risk regions. Visualization with PowerBI and Tableau.   
 3. **Supervised Learning Models**: Developing predictive models to forecast disease outbreaks and determination of accessibility to healthcare facilities.      
-     -**Forecast disease outbreaks**:    
+     -**Forecast disease outbreaks: Test Accuracy 87%, Train Accuracy 85%    
      -**Accessibility to healthcare facilities (Logisctic Regression)** : Test Accuracy 98%, Train Accuracy 90%    
 4. **Deployment**: Creating an interactive web application for prediction of malaria and accessibility to healthcare professionals.
 5. **Front-end & Testing**: Creating an intuitive interface for predictions.
