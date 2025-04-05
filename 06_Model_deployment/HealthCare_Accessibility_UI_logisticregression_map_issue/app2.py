@@ -11,9 +11,18 @@ from streamlit_folium import st_folium
 from datetime import date, timedelta
 from prophet import Prophet
 from sklearn.linear_model import LogisticRegression
+#from PIL import Image
 
+st.cache_data.clear()
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
+logo_path = os.path.join(current_dir, "assets", "omdena_logo.png")
+
+# image_path = os.path.join(os.path.dirname(__file__), "omdena_logo.png")
+# image = Image.open(image_path)
+
+st.image(logo_path, width=200)
+
 
 #malaria
 #load the ndwi and ndvi data from the folder
